@@ -34,6 +34,18 @@ int carregar_fitxers(FILE * expedients,FILE * asignatures){
             return (0);
         }
 }
+void nou_alumne(sExpedients *e){
+    printf("*********************\n");
+    printf("A continuació se li demanaran les dades generals del alumne\n");
+    printf("Nom\n");
+    scanf("%c",&e[1].nom);
+    printf("1r cognom\n");
+    scanf("%c",&e[1].primerCognom);
+    printf("2n cognom\n");
+    scanf("%c",&e[1].segonCognom);
+    printf("NIA\n");
+    scanf("%d",&e[1].NIA);
+}
 
 void alta_expedient(int nia_eval, sExpedients *e){
     printf("A continuació podra donar d'alta un nou expedient\n");
@@ -64,8 +76,10 @@ void alta_expedient(int nia_eval, sExpedients *e){
             }
         }
     };
+    nou_alumne(e);
     
 }
+
 void entrar_matricula(){
     
 }
