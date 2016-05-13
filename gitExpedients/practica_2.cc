@@ -44,15 +44,22 @@ void alta_expedient(int nia_eval, sExpedients *e){
         if(nia_eval==e[i].NIA){
             int nia_error=0;
             printf("ERROR\n");
-            printf("El NIA introduit ja forma part del programa, siusplau, cambii de nia o torni al menu principal.");
+            printf("El NIA introduit ja forma part del programa, siusplau, cambii de nia o torni al menu principal.\n");
+            printf("*********************\n");
+            printf("Premi 1:[Cambiar NIA]\n");
+            printf("Premi 2:[Per tornar al menu]\n");
             scanf("%d",&nia_error);
             switch(nia_error){
                 case 1:
+                    /*Cambiar nia*/
+                    
                     break;
                 case 2:
+                    /*Tornar a menu principal*/                    
+                    return;
                     break;
-                default:
-                    break;
+                default:printf("Opcio incorrecte*");
+                    /*opcio incorrecte*/     
                     
             }
         }
