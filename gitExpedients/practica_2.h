@@ -29,7 +29,7 @@
  */
 
 //
-// File:   welcome.h
+// File:   practica_2.h
 //
 
 #ifndef _practica_2_H
