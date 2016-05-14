@@ -4,25 +4,12 @@
 #include <stdio.h>
 #include "practica_2.h"
 
-typedef struct sExpedients{
-    char nom;
-    char primerCognom;
-    char segonCognom;
-    int NIA;
-}sExpedients;
-
-typedef struct sAsignatures{
-    int num;
-    char tipus;
-    int curs;
-    int trim;
-    int codiAsig;
-    int credits;
-    char nomAsig;
-}sAsigatures;
+void carregar_Fitxer();
+void carregar_Expedients();
+void carregar_Asignatures();
 
 
-int carregar_fitxers(FILE * expedients,FILE * asignatures){
+/*int carregar_fitxers(FILE * expedients,FILE * asignatures){
     
         expedients=fopen("dades\expedient_12345.txt","r");   //Obrim el fitxer "estudiants.txt" dins el punter de tipos fitxer f.
         asignatures=fopen("dades\asgs-get.txt","r");   //Obrim el fitxer "estudiants.txt" dins el punter de tipos fitxer f.
@@ -33,7 +20,7 @@ int carregar_fitxers(FILE * expedients,FILE * asignatures){
 
             return (0);
         }
-}
+}*/
 void nou_alumne(sExpedients *e){
     printf("*********************\n");
     printf("A continuació se li demanaran les dades generals del alumne\n");
@@ -94,6 +81,8 @@ int main() {
     int menu=0;               //Declarem la variable que el menu fara servir.
     sExpedients e[sEMAX];       //Declarem el vector del tipos expedients...
                 /*MAX es una constant que ens deixa posar un maxim de 999 alumnes o expedients de alumne*/
+    sAsignatures a[sEMAX];
+    
     int nia_eval;             //Declarem una variable per comparar si el nia existeix...
     
     FILE * expedients;       //Declarem la variable que contindra el fitxer expedients.
@@ -113,7 +102,7 @@ int main() {
         switch(menu) {
             case 1:
                 /*1. Carregar fitxers: carrega fitxers existents*/
-                carregar_fitxers(expedients,asignatures);
+                carregar_Fitxer(e,a);
                 break;
 
             case 2:
