@@ -25,11 +25,11 @@ void nou_alumne(sExpedients *e){
     printf("*********************\n");
     printf("A continuació se li demanaran les dades generals del alumne\n");
     printf("Nom\n");
-    scanf("%c",&e[1].nom);
+    scanf("%c",&e[1].nom[N]);
     printf("1r cognom\n");
-    scanf("%c",&e[1].primerCognom);
+    scanf("%c",&e[1].primerCognom[N]);
     printf("2n cognom\n");
-    scanf("%c",&e[1].segonCognom);
+    scanf("%c",&e[1].segonCognom[N]);
     printf("NIA\n");
     scanf("%d",&e[1].NIA);
 }
@@ -102,7 +102,7 @@ void menu(){
         switch(menu) {
             case 1:
                 /*1. Carregar fitxers: carrega fitxers existents*/
-                //carregar_Fitxer(e,a);
+                //carregar_Fitxer();
                 break;
 
             case 2:

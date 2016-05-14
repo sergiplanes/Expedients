@@ -17,6 +17,7 @@
 
 #define sEMAX 999
 #define N 50
+#define DEBBUG 1
 
 
 typedef struct sExpedients{
