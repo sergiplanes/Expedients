@@ -77,7 +77,7 @@ void estat_expedient(){
     
 }
 
-int main() {
+void menu(){
     int menu=0;               //Declarem la variable que el menu fara servir.
     sExpedients e[sEMAX];       //Declarem el vector del tipos expedients...
                 /*MAX es una constant que ens deixa posar un maxim de 999 alumnes o expedients de alumne*/
@@ -102,7 +102,7 @@ int main() {
         switch(menu) {
             case 1:
                 /*1. Carregar fitxers: carrega fitxers existents*/
-                carregar_Fitxer(e,a);
+                //carregar_Fitxer(e,a);
                 break;
 
             case 2:
@@ -130,4 +130,11 @@ int main() {
     }while(menu!=6);
     fclose(expedients);
     fclose(asignatures);
+   
+}
+
+int main() {
+    
+    menu();
+    
 }
