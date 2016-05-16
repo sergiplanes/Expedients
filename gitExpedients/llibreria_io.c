@@ -21,6 +21,7 @@ void procesar_fitxer(char *archivo, sExpedients *e, sAsigatures *a)
      FILE *expedients;
      FILE *asignatures;
      long ftam;
+     int i,j;         //contador
 
      expedients=fopen(archivo, "r");
      asignatures=fopen(archivo, "r");
@@ -32,11 +33,22 @@ void procesar_fitxer(char *archivo, sExpedients *e, sAsigatures *a)
          
        }
      else{
-         fseek(expedients, 0L, SEEK_END);
+         /*fseek(expedients, 0L, SEEK_END);
          ftam=ftell(expedients);
-         fclose(expedients);
+         fclose(expedients);*/
          /* Si todo va bien, decimos el tamaño */
          printf ("%30s (%ld bytes)\n", archivo, ftam);
+         for(i=0;i<sEMAX;i++){
+             while(!feof(expedients)){
+                 fscanf(expedients,"%c,%c,%c,%d,%d,%d,%c,%d,%f,%d \m", e[i].nom,e[i].primerCognom,e[i].segonCognom,e[i].NIA,e[i].curs,e[i].codiAsig,e[i].nomAsig,e[i].conv,e[i].nota,e[i].credits);
+             }
+         }
+         for(j=0;j<aMAX;j++){
+            while(!feof(asignatures)){
+                fscanf(asignatures,"\m",a[j].num,a[j].grau,a[j].tipus,a[j].curs,a[j].trim,a[j].codiAsig,a[j].credits,a[j].nomAsig);
+            }
+         }
+         return;
      }
        
 }

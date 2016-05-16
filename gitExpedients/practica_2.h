@@ -16,6 +16,7 @@
 #include <string.h>
 
 #define sEMAX 999
+#define aMAX 111
 #define N 50
 #define DEBBUG 1
 
