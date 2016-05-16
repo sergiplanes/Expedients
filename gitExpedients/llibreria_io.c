@@ -14,10 +14,8 @@ void error(const char *s)
      exit(EXIT_FAILURE);
 }
 
-void procesar_fitxer(char *archivo, sExpedients *e, sAsigatures *a)
-   {
-     /* Para "procesar", o al menos, hacer algo con el archivo, vamos a decir su tamaño en bytes */
-     /* para ello haremos lo que vemos aquí: http://totaki.com/poesiabinaria/2010/04/tamano-de-un-fichero-en-c/ */
+void procesar_fitxer(char *archivo, sExpedients *e, sAsigatures *a){
+     /*La funcio procesar fitxers, és aquella que ens permet guardar els valors dels diferents camps en el vector de estructures e*/
      FILE *expedients;
      FILE *asignatures;
      long ftam;
@@ -25,7 +23,7 @@ void procesar_fitxer(char *archivo, sExpedients *e, sAsigatures *a)
 
      expedients=fopen(archivo, "r");
      asignatures=fopen(archivo, "r");
-     if (expedients == NULL && asignatures==NULL)
+     if (expedients == NULL && asignatures == NULL)
        {
          /* Si ha pasado algo, sólo decimos el nombre */
          printf ("El contigunt del fitxer es errorni...\n");
@@ -38,15 +36,15 @@ void procesar_fitxer(char *archivo, sExpedients *e, sAsigatures *a)
          fclose(expedients);*/
          /* Si todo va bien, decimos el tamaño */
          printf ("%30s (%ld bytes)\n", archivo, ftam);
-         /*for(i=0;i<sEMAX;i++){
+        /* for(i=0;i<sEMAX;i++){
              while(!feof(expedients)){
-                 fscanf(expedients,"%c,%c,%c,%d,%d,%d,%c,%d,%f,%d \m", e[i].nom,e[i].primerCognom,e[i].segonCognom,e[i].NIA,e[i].curs,e[i].codiAsig,e[i].nomAsig,e[i].conv,e[i].nota,e[i].credits);
+                 fscanf(expedients,"%s,%s,%s,%d,%d,%d,%s,%d,%f,%d \m", e[i].nom,e[i].primerCognom,e[i].segonCognom,e[i].NIA,e[i].curs,e[i].codiAsig,e[i].nomAsig,e[i].conv,e[i].nota,e[i].credits);
                  
              }
          }
          for(j=0;j<aMAX;j++){
             while(!feof(asignatures)){
-                fscanf(asignatures,"\m",a[j].num,a[j].grau,a[j].tipus,a[j].curs,a[j].trim,a[j].codiAsig,a[j].credits,a[j].nomAsig);
+                fscanf(asignatures,"%d,%d,%c,%d,%d,%d,%d,%c \m",a[j].num,a[j].grau,a[j].tipus,a[j].curs,a[j].trim,a[j].codiAsig,a[j].credits,a[j].nomAsig);
             }
          }*/
          fclose(expedients);
@@ -76,7 +74,7 @@ void carregar_Fitxer(sExpedients *e, sAsigatures *a){
        {
          printf("Nom del fitxer detectat: %s\n",ent->d_name);
          /* Busca si hi ha un fitxer que contingui el nom seguent asgs-get.txt */
-         if ( (strcmp(ent->d_name, "asgs-get.txt")!=0) )
+         if ( (strcmp(ent->d_name, "asgs-get")!=0) )
            {
              if(DEBBUG)
                  printf("L'ha detectat!\n");
