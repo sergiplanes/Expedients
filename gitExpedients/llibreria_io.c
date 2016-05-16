@@ -25,7 +25,7 @@ void procesar_fitxer(char *archivo, sExpedients *e, sAsigatures *a)
 
      expedients=fopen(archivo, "r");
      asignatures=fopen(archivo, "r");
-     if (expedients == NULL)
+     if (expedients == NULL && asignatures==NULL)
        {
          /* Si ha pasado algo, sólo decimos el nombre */
          printf ("El contigunt del fitxer es errorni...\n");
@@ -38,16 +38,19 @@ void procesar_fitxer(char *archivo, sExpedients *e, sAsigatures *a)
          fclose(expedients);*/
          /* Si todo va bien, decimos el tamaño */
          printf ("%30s (%ld bytes)\n", archivo, ftam);
-         for(i=0;i<sEMAX;i++){
+         /*for(i=0;i<sEMAX;i++){
              while(!feof(expedients)){
                  fscanf(expedients,"%c,%c,%c,%d,%d,%d,%c,%d,%f,%d \m", e[i].nom,e[i].primerCognom,e[i].segonCognom,e[i].NIA,e[i].curs,e[i].codiAsig,e[i].nomAsig,e[i].conv,e[i].nota,e[i].credits);
+                 
              }
          }
          for(j=0;j<aMAX;j++){
             while(!feof(asignatures)){
                 fscanf(asignatures,"\m",a[j].num,a[j].grau,a[j].tipus,a[j].curs,a[j].trim,a[j].codiAsig,a[j].credits,a[j].nomAsig);
             }
-         }
+         }*/
+         fclose(expedients);
+         fclose(asignatures);
          return;
      }
        
@@ -81,6 +84,7 @@ void carregar_Fitxer(sExpedients *e, sAsigatures *a){
              procesar_fitxer(ent->d_name,e,a);
            }
          else if( (strcmp(ent->d_name, "expedient_")!=0) )
+             /*Igual pero amb el fitxer expedients*/
           {
              if(DEBBUG)
                  printf("L'ha detectat!\n");
