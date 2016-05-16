@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 #include "practica_2.h"
+#include "llibreria_io.c"
 
-void carregar_Fitxer();
+//void carregar_Fitxer();
 void carregar_Expedients();
 void carregar_Asignatures();
 
@@ -102,7 +103,7 @@ void menu(){
         switch(menu) {
             case 1:
                 /*1. Carregar fitxers: carrega fitxers existents*/
-                //carregar_Fitxer();
+                carregar_Fitxer(e,a);
                 break;
 
             case 2:

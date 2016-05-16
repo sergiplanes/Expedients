@@ -46,5 +46,5 @@ typedef struct sAsignatures{
 
 
 
-#endif	/* _welcome_H */
+#endif	/* _practica_2_h */
 

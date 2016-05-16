@@ -34,18 +34,18 @@ void procesoArchivo(char *archivo)
        printf ("%30s (No info.)\n", archivo);
 }
 
-void carregar_Fitxer(){
+void carregar_Fitxer(sExpedients *e, sAsigatures *a){
         /* Creem un punter que conte el directori on son els nostres fitxers(exp's/asig) */
      DIR *directori_fitxers;
      /* en aquesta direccio de memoria guardarem la informacio del arxiu que es va carregant a cada moment*/
      struct dirent *ent;
 
      /* Obrim el directori*/
-     directori_fitxers = opendir ("");
+     directori_fitxers = opendir ("\dades");
 
      /*Comprovem que no hi hagi cap error*/
      if (directori_fitxers == NULL){ 
-         printf("Sembla que no shha pogut carregar ningun fitxer comprova el directori...");
+         printf("Sembla que no shha pogut carregar ningun fitxer comprova el directori...\n");
          return;
      }
      
