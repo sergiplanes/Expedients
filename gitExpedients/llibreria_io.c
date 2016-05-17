@@ -145,34 +145,47 @@ void nou_alumne(sExpedients *e){
 }
 
 void alta_expedient(int nia_eval, sExpedients *e){
+    int nia_error=0;
+    
     printf("A continuació podra donar d'alta un nou expedient\n");
     printf("Per tal de que tot funcioni correctament, nececitem un NIA valid\n(Recordar que per que sigui valid te que tenir 5 digits \ni no pot ser cap NIA duplicat ja que no podem donar d'alta 2 persones amb el mateix NIA,): \n");
     scanf("%d",&nia_eval);
     
-    for(int i=0;i<sEMAX;i++){
-        if(nia_eval==e[i].NIA){
-            int nia_error=0;
-            printf("ERROR\n");
-            printf("El NIA introduit ja forma part del programa, siusplau, cambii de nia o torni al menu principal.\n");
-            printf("*********************\n");
-            printf("Premi 1:[Cambiar NIA]\n");
-            printf("Premi 2:[Per tornar al menu]\n");
-            scanf("%d",&nia_error);
-            switch(nia_error){
-                case 1:
-                    /*Cambiar nia*/
-                    
-                    break;
-                case 2:
-                    /*Tornar a menu principal*/                    
-                    return;
-                    break;
-                default:printf("Opcio incorrecte*");
-                    /*opcio incorrecte*/     
-                    
-            }
-        }
-    };
+    do{
+        for(int i=0;i<sEMAX;i++){
+           if(nia_eval==e[i].NIA){
+               printf("ERROR\n");
+               printf("El NIA introduit ja forma part del programa, siusplau, cambii de nia o torni al menu principal.\n");
+               printf("*********************\n");
+               printf("Premi 1:[Cambiar NIA]\n");
+               printf("Premi 2:[Per tornar al menu]\n");
+               scanf("%d",&nia_error);
+               switch(nia_error){
+                   case 1:
+                       /*Cambiar nia*/
+                       printf("Torni a introduir el NIA: ");
+                       scanf("%d",&nia_eval);
+                       for(int i=0;i<sEMAX;i++){
+                            if(nia_eval==e[i].NIA){
+                               printf("Torni a introduir el NIA: ");
+                               scanf("%d",&nia_eval); 
+                            }else{
+                               nou_alumne(e);
+                            }
+                       }
+                       break;
+                   case 2:
+                       /*Tornar a menu principal*/                    
+                       return;
+                       break;
+                   default:printf("Opcio incorrecte*");
+                       /*opcio incorrecte*/     
+
+               }
+           }
+       };   
+    }while(nia_error!=0);
+    
     nou_alumne(e);
     
 }

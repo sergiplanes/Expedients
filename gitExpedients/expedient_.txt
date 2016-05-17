@@ -1,0 +1,5 @@
+**Dades Personals**
+Nom                             :i@
+Primer cognom                   :Sergi
+Segoncognom                     :Planes
+Segoncognom                     :
