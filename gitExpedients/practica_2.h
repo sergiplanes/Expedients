@@ -15,7 +15,7 @@
 #include <dirent.h>
 #include <string.h>
 
-#define sEMAX 999
+#define sEMAX 25
 #define aMAX 111
 #define N 50
 #define DEBBUG 1
