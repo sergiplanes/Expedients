@@ -9,35 +9,38 @@ void procesar_fitxers();
 void nou_alumne();
 void alta_expedient();
 
-void error(const char *s)
-   {
-     /* perror() devuelve la cadena S y el error (en cadena de caracteres) que tenga errno */
-     perror (s);
-     exit(EXIT_FAILURE);
-}
-
-void procesar_fitxer(char *archivo, sExpedients *e, sAsigatures *a){
+void procesar_fitxer(char *fitxer, sExpedients *e, sAsigatures *a){
      /*La funcio procesar fitxers, és aquella que ens permet guardar els valors dels diferents camps en el vector de estructures e*/
-     FILE *expedients;
-     FILE *asignatures;
+     FILE *expedients;          //fitxer expedients
+     FILE *asignatures;         //fitxer asignatures
      long ftam;
-     int i,j;         //contador
-
-     expedients=fopen(archivo, "r");
-     asignatures=fopen(archivo, "r");
-     if (expedients == NULL && asignatures == NULL)
+     int i,j;                   //contador
+     
+     //si el fitxer es expedients o asigntures el carregem en el seu contenidor
+     if (fitxer=="expedients_"){
+        expedients=fopen(fitxer, "r"); 
+     }else{
+        asignatures=fopen(fitxer, "r");
+     }
+       
+     if (expedients == NULL)
        {
          /* Si ha pasado algo, sólo decimos el nombre */
          printf ("El contigunt del fitxer es errorni...\n");
          return;
          
        }
-     else{
+     else if(asignatures ==NULL){
+         /* Si ha pasado algo, sólo decimos el nombre */
+         printf ("El contigunt del fitxer es errorni...\n");
+         return;
+     }else{
+         printf("Contingut del fitxer guardantse en memoria...");
          /*fseek(expedients, 0L, SEEK_END);
          ftam=ftell(expedients);
          fclose(expedients);*/
          /* Si todo va bien, decimos el tamaño */
-         printf ("%30s (%ld bytes)\n", archivo, ftam);
+         printf ("%30s (%ld bytes)\n", fitxer, ftam);
         /* for(i=0;i<sEMAX;i++){
              while(!feof(expedients)){
                  fscanf(expedients,"%s,%s,%s,%d,%d,%d,%s,%d,%f,%d \m", e[i].nom,e[i].primerCognom,e[i].segonCognom,e[i].NIA,e[i].curs,e[i].codiAsig,e[i].nomAsig,e[i].conv,e[i].nota,e[i].credits);
@@ -101,7 +104,7 @@ void nou_alumne(sExpedients *e){
     char salto[] ="\n";
     char dades_personals[] ="**Dades Personals**";
     char nom[] ="Nom                             :";
-    char nia[] ="NIA                                      :";
+    char nia[] ="NIA                             :";
     char primer_cognom[] ="Primer cognom                   :";
     char segon_cognom[] ="Segoncognom                     :";
     char expedient_[50]="expedient_";
@@ -131,7 +134,7 @@ void nou_alumne(sExpedients *e){
 
     
     FILE* expedients;
-    expedients = fopen(nomFitxer, "w");
+    expedients = fopen("expedients_", "w");
     /*Dades personals*/
     fputs(dades_personals,expedients);
     fputs(salto,expedients);
@@ -148,11 +151,11 @@ void nou_alumne(sExpedients *e){
     fputs(e[sEMAX+1].segonCognom, expedients);
     fputs(salto,expedients);
     /*NIA*/
-    fputs(segon_cognom,expedients);
-    //fputs(e[sEMAX+1].NIA, expedients);
-    
+    fputs(nia,expedients);
+    fputs(NIA, expedients);
+    /*Aqui tancarem el fitxer expedients, i informarem al usuari que el proces ha funcionat*/
     fclose(expedients);
-    printf("Proceso completado\n");
+    printf("Accio completada\n");
     
     
 }

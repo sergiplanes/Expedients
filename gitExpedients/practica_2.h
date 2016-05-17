@@ -17,7 +17,7 @@
 
 #define sEMAX 25
 #define aMAX 111
-#define N 50
+#define N 99
 #define DEBBUG 1
 
 
