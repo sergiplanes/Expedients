@@ -104,6 +104,14 @@ void nou_alumne(sExpedients *e){
     char nia[] ="NIA                                      :";
     char primer_cognom[] ="Primer cognom                   :";
     char segon_cognom[] ="Segoncognom                     :";
+    char expedient_[50]="expedient_";
+    char txt[50]=".txt";
+    char expedient_NIA[50];
+    char nomFitxer[50];
+    
+    int inia;
+    char NIA[5];
+    
     
     printf("*********************\n");
     printf("A continuació se li demanaran les dades generals del alumne\n");
@@ -116,9 +124,14 @@ void nou_alumne(sExpedients *e){
     scanf("%s",&e[sEMAX+1].segonCognom[N]);
     printf("NIA\n");
     scanf("%d",&e[sEMAX+1].NIA);
+    inia = e[sEMAX].NIA;                     //Guardem el valor del nia en una viarble per fer el parse de int a char
+    snprintf(NIA, 5, "%d", inia);                 //Funcio que ens converteix un int a un string.
+    snprintf(nomFitxer, 50, "%s%s%s", expedient_, NIA, txt);
+
+
     
     FILE* expedients;
-    expedients = fopen("expedient_.txt", "w");
+    expedients = fopen(nomFitxer, "w");
     /*Dades personals*/
     fputs(dades_personals,expedients);
     fputs(salto,expedients);
