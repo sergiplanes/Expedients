@@ -1,5 +1,5 @@
 //Programa principal: Almenys la funció main i les funcions addicionals que calgui o tingui sentit.
-
+//Sergi Planes
 
 #include <stdio.h>
 #include "practica_2.h"

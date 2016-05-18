@@ -1,6 +1,6 @@
 /*
- * File:Practica_2.h
- * Autors:Sergi Planes and Adrian Ribera
+ * Arxiu:Practica_2.h
+ * Atutors: Sergi Planes
  */
 
 #ifndef _practica_2_H
